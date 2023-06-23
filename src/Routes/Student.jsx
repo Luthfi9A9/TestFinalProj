@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
   Table,
+  TableContainer,
   Thead,
   Tbody,
   Tfoot,
@@ -79,44 +80,46 @@ const Student = () => {
               Fakultas Teknologi Informasi dan Sains
             </option>
           </Select>
-          <Table id="table-student">
-            <Thead>
-              <Tr>
-                <Th>No</Th>
-                <Th>Full Name</Th>
-                <Th>Faculty</Th>
-                <Th>Program Study</Th>
-                <Th>Option</Th>
-              </Tr>
-            </Thead>
-            <Tbody id="student-data">
-              {filterStudent.length > 0 ? (
-                filterStudent?.map((student, index) => (
-                  <Tr className="student-data-row" key={student.id}>
-                    <Td>{index + 1}</Td>
-                    <Td>
-                      <Link to={`/student/${student.id}`}>
-                        {student.fullname}
-                      </Link>
-                    </Td>
-                    <Td>{student.faculty}</Td>
-                    <Td>{student.programStudy}</Td>
-                    <Td id="core-delete">
-                      <input
-                        onClick={() => deleteStudents(student.id)}
-                        data-testid={`delete-${student.id}`}
-                        value="Delete"
-                        type="submit"
-                        className="delete-btn"
-                      ></input>
-                    </Td>
-                  </Tr>
-                ))
-              ) : (
-                <p>Loading ...</p>
-              )}
-            </Tbody>
-          </Table>
+          <TableContainer>
+            <Table id="table-student">
+              <Thead>
+                <Tr>
+                  <Th>No</Th>
+                  <Th>Full Name</Th>
+                  <Th>Faculty</Th>
+                  <Th>Program Study</Th>
+                  <Th>Option</Th>
+                </Tr>
+              </Thead>
+              <Tbody id="student-data">
+                {filterStudent.length > 0 ? (
+                  filterStudent?.map((student, index) => (
+                    <Tr className="student-data-row" key={student.id}>
+                      <Td>{index + 1}</Td>
+                      <Td>
+                        <Link to={`/student/${student.id}`}>
+                          {student.fullname}
+                        </Link>
+                      </Td>
+                      <Td>{student.faculty}</Td>
+                      <Td>{student.programStudy}</Td>
+                      <Td id="core-delete">
+                        <input
+                          onClick={() => deleteStudents(student.id)}
+                          data-testid={`delete-${student.id}`}
+                          value="Delete"
+                          type="submit"
+                          className="delete-btn"
+                        ></input>
+                      </Td>
+                    </Tr>
+                  ))
+                ) : (
+                  <p>Loading ...</p>
+                )}
+              </Tbody>
+            </Table>
+          </TableContainer>
         </Box>
         <Footer />
       </Box>
