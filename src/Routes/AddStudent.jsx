@@ -12,6 +12,10 @@ import {
   Input,
   Box,
   Button,
+  Grid,
+  GridItem,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 
 const AddStudent = () => {
@@ -85,114 +89,149 @@ const AddStudent = () => {
       {/* TODO: answer here */}
       <Box minHeight="100vh">
         <NavBar></NavBar>
-        <form onSubmit={handleSubmit} padding="5px">
-          <FormControl>
-            <FormLabel htmlFor="input-name">Fullname:</FormLabel>
-            <Input
-              type="text"
-              id="input-name"
-              value={Fullname}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-              data-testid="name"
-            />
+        <Box margin={3} minHeight="100vh">
+          <form onSubmit={handleSubmit} padding="5px">
+            <FormControl>
+              <Grid
+                templateAreas={`
+            "fullnam fullnam"
+            "pict pict"
+            "addres addres"
+            "phone date"
+            "gender programStudy"
+            `}
+              >
+                <GridItem area={"fullnam"} marginBottom={2}>
+                  <FormLabel htmlFor="input-name">Fullname:</FormLabel>
+                  <Input
+                    type="text"
+                    id="input-name"
+                    value={Fullname}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                    data-testid="name"
+                  />
+                </GridItem>
+                <GridItem area={"pict"} marginBottom={2}>
+                  <FormLabel htmlFor="input-picture">
+                    profile Picture:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    id="input-picture"
+                    value={profilePicture}
+                    onChange={(e) => setprofilePicture(e.target.value)}
+                    required
+                    data-testid="profilePicture"
+                  />
+                </GridItem>
 
-            <FormLabel htmlFor="input-picture">profile Picture:</FormLabel>
-            <Input
-              type="text"
-              id="input-picture"
-              value={profilePicture}
-              onChange={(e) => setprofilePicture(e.target.value)}
-              required
-              data-testid="profilePicture"
-            />
+                <GridItem area={"addres"} marginBottom={2}>
+                  <FormLabel htmlFor="input-address">Address:</FormLabel>
+                  <Input
+                    type="text"
+                    id="input-address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    data-testid="address"
+                  />
+                </GridItem>
 
-            <FormLabel htmlFor="input-address">Address:</FormLabel>
-            <Input
-              type="text"
-              id="input-address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              data-testid="address"
-            />
-
-            <FormLabel htmlFor="input-PhoneNumber">Phone Number:</FormLabel>
-            <Input
-              type="text"
-              id="input-PhoneNumber"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-              data-testid="phoneNumber"
-            />
-
-            <FormLabel htmlFor="input-date">Birth Date:</FormLabel>
-            <Input
-              type="date"
-              id="input-date"
-              value={birth}
-              onChange={(e) => setBirth(e.target.value)}
-              required
-              data-testid="date"
-            />
-
-            <FormLabel htmlFor="select-gender">Gender:</FormLabel>
-            <Select
-              id="select-gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
-              data-testid="gender"
-            >
-              <option value="">Pilih Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </Select>
-
-            <FormLabel htmlFor="select-program-study">Program Study:</FormLabel>
-            <Select
-              id="select-program-study"
-              value={study}
-              onChange={(e) => setStudy(e.target.value)}
-              required
-              data-testid="prody"
-            >
-              <option value="">Pilih Mata Kuliah</option>
-              <option value="Ekonomi">Ekonomi</option>
-              <option value="Manajemen">Manajemen</option>
-              <option value="Akuntansi">Akuntansi</option>
-              <option value="Administrasi Publik">Administrasi Publik</option>
-              <option value="Administrasi Bisnis">Administrasi Bisnis</option>
-              <option value="Hubungan Internasional">
-                Hubungan Internasional
-              </option>
-              <option value="Teknik Sipil">Teknik Sipil</option>
-              <option value="Arsitektur">Arsitektur</option>
-              <option value="Matematika">Matematika</option>
-              <option value="Fisika">Fisika</option>
-              <option value="Informatika">Informatika</option>
-            </Select>
-            {/* button addstudent */}
-            <Button
-              type="submit"
-              data-testid="add-btn"
-              color="textColor.baseButton"
-              bgColor="bgColor.baseBgButton"
-            >
-              Add student
-            </Button>
-            {/* button back to student */}
-            <Button
-              onClick={() => {
-                navigate("/student");
-              }}
-              color="textColor.baseButton"
-              bgColor="bgColor.baseBgButton"
-            >
-              Back
-            </Button>
-          </FormControl>
-        </form>
+                <GridItem area={"phone"} marginBottom={2}>
+                  <FormLabel htmlFor="input-PhoneNumber">
+                    Phone Number:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    id="input-PhoneNumber"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                    data-testid="phoneNumber"
+                  />
+                </GridItem>
+                <GridItem area={"date"} marginLeft={3}>
+                  <FormLabel htmlFor="input-date">Birth Date:</FormLabel>
+                  <Input
+                    type="date"
+                    id="input-date"
+                    value={birth}
+                    onChange={(e) => setBirth(e.target.value)}
+                    required
+                    data-testid="date"
+                  />
+                </GridItem>
+                <GridItem area={"gender"} marginBottom={2}>
+                  <FormLabel htmlFor="select-gender">Gender:</FormLabel>
+                  <Select
+                    id="select-gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    required
+                    data-testid="gender"
+                  >
+                    <option value="">Pilih Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </Select>
+                </GridItem>
+                <GridItem area={"programStudy"} marginLeft={3}>
+                  <FormLabel htmlFor="select-program-study">
+                    Program Study:
+                  </FormLabel>
+                  <Select
+                    id="select-program-study"
+                    value={study}
+                    onChange={(e) => setStudy(e.target.value)}
+                    required
+                    data-testid="prody"
+                  >
+                    <option value="">Pilih Mata Kuliah</option>
+                    <option value="Ekonomi">Ekonomi</option>
+                    <option value="Manajemen">Manajemen</option>
+                    <option value="Akuntansi">Akuntansi</option>
+                    <option value="Administrasi Publik">
+                      Administrasi Publik
+                    </option>
+                    <option value="Administrasi Bisnis">
+                      Administrasi Bisnis
+                    </option>
+                    <option value="Hubungan Internasional">
+                      Hubungan Internasional
+                    </option>
+                    <option value="Teknik Sipil">Teknik Sipil</option>
+                    <option value="Arsitektur">Arsitektur</option>
+                    <option value="Matematika">Matematika</option>
+                    <option value="Fisika">Fisika</option>
+                    <option value="Informatika">Informatika</option>
+                  </Select>
+                </GridItem>
+                {/* button addstudent */}
+              </Grid>
+              <Flex>
+                <Button
+                  type="submit"
+                  data-testid="add-btn"
+                  color="textColor.baseButton"
+                  bgColor="bgColor.baseBgButton"
+                >
+                  Add student
+                </Button>
+                {/* button back to student */}
+                <Spacer />
+                <Button
+                  onClick={() => {
+                    navigate("/student");
+                  }}
+                  color="textColor.baseButton"
+                  bgColor="bgColor.baseBgButton"
+                >
+                  Back
+                </Button>
+              </Flex>
+            </FormControl>
+          </form>
+        </Box>
         <Footer />
       </Box>
     </>

@@ -7,16 +7,16 @@ const Footer = () => {
     <Box
       className="footer"
       bgColor="bgColor.baseBgNavbarFoot"
-      position="fixed"
+      // position="fixed"
       right="0"
       left="0"
       bottom="0"
       padding="6px"
     >
-      <Text textAlign="center" color="textColor.baseText">
+      <Text textAlign="center" color="textColor.baseText" as="b">
         <p className="studentName">Luthfi Alwan Azhari</p>
       </Text>
-      <Text textAlign="center" color="textColor.baseText">
+      <Text textAlign="center" color="textColor.baseText" as="b">
         <p className="studentId">FE4881660</p>
       </Text>
     </Box>

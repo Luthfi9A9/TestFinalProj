@@ -2,7 +2,14 @@
 import React from "react";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import { Button, Box, Text, AbsoluteCenter } from "@chakra-ui/react";
+import {
+  Button,
+  Box,
+  Text,
+  AbsoluteCenter,
+  Flex,
+  Spacer,
+} from "@chakra-ui/react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,28 +17,31 @@ const Home = () => {
   return (
     <>
       <Box bgColor="bgColor.baseBg" minHeight="100vh" minWidth="127px">
-        <Text
-          alignItems="flex-start"
-          padding="20px"
-          bgColor="bgColor.baseBgNavbarFoot"
-          color="textColor.baseText"
-        >
-          <h1>Home Page</h1>
-        </Text>
-        <AbsoluteCenter position="relative">
-          <Button
-            onClick={() => {
-              navigate("/student");
-            }}
-            data-testid="student-btn"
-            bgColor="bgColor.baseBgButton"
-            color="textColor.baseButton"
-            variant="solid"
+        <Flex flexDirection="column" minHeight="100vh">
+          <Flex
+            justifyContent="center"
+            p={4}
+            bgColor="bgColor.baseBgNavbarFoot"
           >
-            All Student
-          </Button>
-        </AbsoluteCenter>
-        <Footer />
+            <Text color="textColor.baseText" as="b">
+              <h1>Home Page</h1>
+            </Text>
+          </Flex>
+          <Flex flex={1} justifyContent="center" alignItems="center">
+            <Button
+              onClick={() => {
+                navigate("/student");
+              }}
+              data-testid="student-btn"
+              bgColor="bgColor.baseBgButton"
+              color="textColor.baseButton"
+              variant="solid"
+            >
+              All Student
+            </Button>
+          </Flex>
+          <Footer />
+        </Flex>
       </Box>
     </>
   ); // TODO: replace this

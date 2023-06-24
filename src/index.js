@@ -8,12 +8,20 @@ const myTheme = extendTheme({
   colors: {
     textColor: {
       baseText: "#001C30",
+      textDelete: "#ED2B2A",
       baseButton: "#DDE6ED",
     },
     bgColor: {
       baseBgNavbarFoot: "#9DB2BF",
       baseBg: "#F1F6F9",
       baseBgButton: "#001C30",
+    },
+  },
+  styeling: {
+    sizes: {
+      sm: {},
+      md: {},
+      xl: {},
     },
   },
 });

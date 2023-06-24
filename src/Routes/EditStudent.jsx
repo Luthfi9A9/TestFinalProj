@@ -13,6 +13,11 @@ import {
   Input,
   Box,
   Button,
+  Grid,
+  GridItem,
+  Flex,
+  Spacer,
+  Text,
 } from "@chakra-ui/react";
 
 const EditStudent = () => {
@@ -102,86 +107,139 @@ const EditStudent = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <NavBar></NavBar>
-          <h1>Edit Student</h1>
-          <FormLabel htmlFor="">Profile Picture:</FormLabel>
-          <img src={profilePicture} alt="Profile Picture" />
-          <FormLabel htmlFor="input-name">Fullname:</FormLabel>
-          <Input
-            type="text"
-            id="input-name"
-            value={Fullname}
-            onChange={(e) => setFullName(e.target.value)}
-            data-testid="name"
-          />
+          <Box margin={3} minHeight="100vh">
+            <Text as="b">Edit Student</Text>
+            <Grid
+              templateAreas={`
+            "pict pict"
+            "fullnam fullnam"
+            "addres addres"
+            "phone date"
+            "gender programStudy"
+            `}
+              marginTop={3}
+            >
+              <GridItem area={"pict"} marginBottom={2}>
+                <FormLabel htmlFor="">Profile Picture:</FormLabel>
+                <img src={profilePicture} alt="Profile Picture" />
+              </GridItem>
+              <GridItem area={"fullnam"} marginBottom={2}>
+                <FormLabel htmlFor="input-name">Fullname:</FormLabel>
+                <Input
+                  type="text"
+                  id="input-name"
+                  value={Fullname}
+                  onChange={(e) => setFullName(e.target.value)}
+                  data-testid="name"
+                />
+              </GridItem>
+              <GridItem area={"addres"} marginBottom={2}>
+                <FormLabel htmlFor="input-address">Address:</FormLabel>
+                <Input
+                  type="text"
+                  id="input-address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  data-testid="address"
+                />
+              </GridItem>
+              <GridItem area={"phone"} marginBottom={2}>
+                <FormLabel htmlFor="input-PhoneNumber">Phone Number:</FormLabel>
+                <Input
+                  type="text"
+                  id="input-PhoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  data-testid="phoneNumber"
+                />
+              </GridItem>
+              <GridItem area={"date"} marginLeft={3}>
+                <FormLabel htmlFor="input-date">Birth Date:</FormLabel>
+                <Input
+                  type="date"
+                  id="input-date"
+                  value={birth}
+                  onChange={(e) => setBirth(e.target.value)}
+                  data-testid="date"
+                />
+              </GridItem>
 
-          <FormLabel htmlFor="input-address">Address:</FormLabel>
-          <Input
-            type="text"
-            id="input-address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            data-testid="address"
-          />
-
-          <FormLabel htmlFor="input-PhoneNumber">Phone Number:</FormLabel>
-          <Input
-            type="text"
-            id="input-PhoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            data-testid="phoneNumber"
-          />
-
-          <FormLabel htmlFor="input-date">Birth Date:</FormLabel>
-          <Input
-            type="date"
-            id="input-date"
-            value={birth}
-            onChange={(e) => setBirth(e.target.value)}
-            data-testid="date"
-          />
-
-          <FormLabel htmlFor="select-gender">Gender:</FormLabel>
-          <Select
-            id="select-gender"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            data-testid="gender"
-          >
-            <option value="">Pilih Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </Select>
-
-          <FormLabel htmlFor="select-program-study">Program Study:</FormLabel>
-          <Select
-            id="select-program-study"
-            value={study}
-            onChange={(e) => setStudy(e.target.value)}
-            data-testid="prody"
-          >
-            <option value="">Pilih Mata Kuliah</option>
-            <option value="Ekonomi">Ekonomi</option>
-            <option value="Manajemen">Manajemen</option>
-            <option value="Akuntansi">Akuntansi</option>
-            <option value="Administrasi Publik">Administrasi Publik</option>
-            <option value="Administrasi Bisnis">Administrasi Bisnis</option>
-            <option value="Hubungan Internasional">
-              Hubungan Internasional
-            </option>
-            <option value="Teknik Sipil">Teknik Sipil</option>
-            <option value="Arsitektur">Arsitektur</option>
-            <option value="Matematika">Matematika</option>
-            <option value="Fisika">Fisika</option>
-            <option value="Informatika">Informatika</option>
-          </Select>
-
-          <Button type="submit" data-testid="edit-btn" onClick={handleSubmit}>
-            Edit Student
-          </Button>
+              <GridItem area={"gender"} marginBottom={2}>
+                <FormLabel htmlFor="select-gender">Gender:</FormLabel>
+                <Select
+                  id="select-gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  data-testid="gender"
+                >
+                  <option value="">Pilih Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </Select>
+              </GridItem>
+              <GridItem area={"programStudy"} marginLeft={3}>
+                <FormLabel htmlFor="select-program-study">
+                  Program Study:
+                </FormLabel>
+                <Select
+                  id="select-program-study"
+                  value={study}
+                  onChange={(e) => setStudy(e.target.value)}
+                  data-testid="prody"
+                >
+                  <option value="">Pilih Mata Kuliah</option>
+                  <option value="Ekonomi">Ekonomi</option>
+                  <option value="Manajemen">Manajemen</option>
+                  <option value="Akuntansi">Akuntansi</option>
+                  <option value="Administrasi Publik">
+                    Administrasi Publik
+                  </option>
+                  <option value="Administrasi Bisnis">
+                    Administrasi Bisnis
+                  </option>
+                  <option value="Hubungan Internasional">
+                    Hubungan Internasional
+                  </option>
+                  <option value="Teknik Sipil">Teknik Sipil</option>
+                  <option value="Arsitektur">Arsitektur</option>
+                  <option value="Matematika">Matematika</option>
+                  <option value="Fisika">Fisika</option>
+                  <option value="Informatika">Informatika</option>
+                </Select>
+              </GridItem>
+            </Grid>
+            <Flex>
+              <Button
+                type="submit"
+                data-testid="edit-btn"
+                onClick={handleSubmit}
+                color="textColor.baseButton"
+                bgColor="bgColor.baseBgButton"
+              >
+                Edit Student
+              </Button>
+              <Spacer />
+              <Button
+                onClick={() => {
+                  navigate("/student");
+                }}
+                color="textColor.baseButton"
+                bgColor="bgColor.baseBgButton"
+              >
+                Back
+              </Button>
+            </Flex>
+          </Box>
         </form>
       )}
-      <Link to="/student">Back</Link>
+      {/* <Link
+        to="/student"
+        color="textColor.baseButton"
+        bgColor="bgColor.baseBgButton"
+      >
+        Back
+      </Link> */}
+
       <Footer />
     </>
   );
