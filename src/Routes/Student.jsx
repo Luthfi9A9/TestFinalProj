@@ -1,7 +1,7 @@
 // TODO: answer here
 import React from "react";
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {
@@ -15,7 +15,7 @@ import {
   Td,
   Box,
   Select,
-  Link,
+  // Link,
 } from "@chakra-ui/react";
 
 const Student = () => {

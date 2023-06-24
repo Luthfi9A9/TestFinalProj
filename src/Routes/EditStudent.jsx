@@ -70,6 +70,7 @@ const EditStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Test submit");
     const faculty = getFacultyByProgramStudy(study);
     const updateStudent = {
       ...student,
@@ -99,7 +100,7 @@ const EditStudent = () => {
       {isLoading ? (
         <p>Loading ...</p>
       ) : (
-        <FormControl onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <NavBar></NavBar>
           <h1>Edit Student</h1>
           <FormLabel htmlFor="">Profile Picture:</FormLabel>
@@ -175,10 +176,10 @@ const EditStudent = () => {
             <option value="Informatika">Informatika</option>
           </Select>
 
-          <Button type="submit" data-testid="edit-btn">
+          <Button type="submit" data-testid="edit-btn" onClick={handleSubmit}>
             Edit Student
           </Button>
-        </FormControl>
+        </form>
       )}
       <Link to="/student">Back</Link>
       <Footer />
